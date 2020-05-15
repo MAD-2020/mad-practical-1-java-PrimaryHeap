@@ -29,6 +29,7 @@ public class Question5 {
     Scanner in = new Scanner(System.in);
     //System.out.print("Enter a integer: ");
     int times = in.nextInt();
+    int max = 0;
     int seen = 0;
     HashMap<Integer, Integer> visited = new HashMap<>();
     for (int i = 0; i < times; i++) {
@@ -40,11 +41,13 @@ public class Question5 {
         visited.put(n, 1);
       }
     }
-    for (int x : visited.values()) {
-      if (seen < x) {
-        seen = x;
+
+    for (int x : visited.keySet()) {
+      if (visited.get(x) > seen) {
+        seen = visited.get(x);
+        max = x;
       }
     }
-    System.out.print(seen);
+    System.out.print(max);
   }
 }
